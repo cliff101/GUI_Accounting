@@ -1,0 +1,1 @@
+pyinstaller -F ./main_ui.py --add-data=".\style.qss;."

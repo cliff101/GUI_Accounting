@@ -1,0 +1,9 @@
+PySide6
+PySide6-Addons
+PySide6-Essentials
+qt-material
+cryptography
+pafy
+requests
+python-vlc
+pyinstaller
