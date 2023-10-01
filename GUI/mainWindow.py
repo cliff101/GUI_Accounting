@@ -902,7 +902,7 @@ function that backup data
             f"本日餘款： {self.data[self.selectedKey]['real_money']}")
 
         # refresh yest money
-        data_keys_list = list(data.keys())
+        data_keys_list = list(self.data.keys())
         yest_index = data_keys_list.index(self.selectedKey)-1
         yest_money = 0
         if yest_index < 0:
