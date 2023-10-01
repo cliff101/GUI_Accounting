@@ -267,6 +267,7 @@ class DiaryPrinter:  # Class for printing diary
         self.serviceIsRunning = False
 
 
+# TODO: can hide no data date, but click edit today data will disable it
 class mainWindow(QMainWindow, Ui_mainWindow):
     setTodayDiaryTextBrowserSignal = Signal(str)
 
@@ -948,17 +949,21 @@ function that backup data
         self.todayIncomeListview.setEnabled(inverse)
         self.addIncomeBtn.setEnabled(inverse)
         self.editTodaySong.setEnabled(inverse)
+        self.editTodayMoney.setEnabled(inverse)
         QApplication.processEvents()
 
     def disableDiaryUI(self, inverse=False):  # Disable diary UI
         self.todayDiaryTextBrowser.setEnabled(inverse)
         self.editTodayDiaryBtn.setEnabled(inverse)
+        self.cmdTipsBtn.setEnabled(inverse)
         QApplication.processEvents()
 
     def disableAllDayUI(self, inverse=False):  # Disable all day UI
         self.allDayListview.setEnabled(inverse)
         self.editTodayDataBtn.setEnabled(inverse)
         self.showMonthlyDataBtn.setEnabled(inverse)
+        self.showVersionLogBtn.setEnabled(inverse)
+        self.setPasswordBtn.setEnabled(inverse)
         QApplication.processEvents()
 
     def disableAllUI(self, inverse=False):  # Disable all UI
