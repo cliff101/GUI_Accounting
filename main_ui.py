@@ -11,6 +11,7 @@ from GUI.passwordInput import passwordInput
 from GUI.passwordCreate import passwordCreate
 from GUI.utils import pickle_saver, get_key_path, decrypt_keys, encrypt_keys
 import ctypes
+import os
 
 # 強制將執行序優先級設定為最高 可能會有問題 也不確定是否有效
 handle = ctypes.windll.kernel32.GetCurrentProcess()  # 获取当前进程的句柄
@@ -58,6 +59,10 @@ if __name__ == '__main__':  # prevent multiprocessing from import unused package
             '''
             key_path = get_key_path(
                 in_file)  # Get the key path from input file
+            if not os.path.exists(key_path):  # Check if key exist
+                QMessageBox.critical(
+                    self, "錯誤", "金鑰不存在！\n請確認.key的金鑰與.bk檔案放在同一個資料夾資下！", QMessageBox.Ok)
+                return None
             key_file = open(key_path, 'rb')  # Open the key file
             key_encrypted = key_file.read()
             key_file.close()  # Close file
