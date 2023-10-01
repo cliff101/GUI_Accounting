@@ -395,6 +395,7 @@ class mainWindow(QMainWindow, Ui_mainWindow):
         date = datetime.datetime.now().strftime("%Y-%m-%d")
         date_day = datetime.datetime.strptime(
             date, "%Y-%m-%d")  # Get datetime from date string
+        real_money_last = 0
         if len(data) > 0:  # If there is nothing in data, no need to fix missing data
             # Get the last data content of data
             last_item = [x for x in list(
@@ -409,6 +410,8 @@ class mainWindow(QMainWindow, Ui_mainWindow):
                 data[(last_day+datetime.timedelta(days=fix)).strftime("%Y-%m-%d")] = {
                     'cost': {}, 'earn': {}, 'real_money': real_money_last}
                 fix += 1  # Next day that is missing
+            
+        data[date] = {'cost': {}, 'earn': {}, 'real_money': real_money_last}
 
         self.saveData()
         self.refreshAllDayListview(selected=date)
